@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Quiz</title>
+    <link rel="stylesheet" href="assets/stylesheet.css"/>
+</head>
+<body>
+    
+    <!--Page that leads to the highscores-->
+    <div class="scores">View Highscores</div>
+
+    <!--A timer that shows how much time is left in the game-->
+    <div class="timer">Time: <span id="time">0</span></div>
+
+    <!--First screen that they will see-->
+    <div id="start-Screen" class="start">
+        <h1>NBA Quiz</h1>
+        <p>To the best of your ability answer these NBA based questions in the time allowed. Time will be deducted if a wrong answer is selected.</p>
+        <button type="button" id="startButton">START!</button>
+    </div>
+    <div id="questions" class="hide">
+        <h2 id="question-title"></h2>
+        <div id="choices" class="choices"></div>
+
+    </div>
+    <div id="endscreen" class="hide">
+      <h2>Quiz Over!</h2>
+      <p> You final score is <span id="finalscore"></span></p>
+      <p>Enter Initials: <input type="text" id="initials"/> </p>
+      <button id="submitbutton">Submit</button>
+
+    </div>
+
+
+
+
+
+
+
+
+
+<script src="/assets/script.js"></script>
+</body>
+</html>
