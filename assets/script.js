@@ -53,7 +53,7 @@ var questions = [
         answer: "LA Lakers"
     },
     {
-        title: "Which one of these team DO NOT wear the color red?",
+        title: "Which one of these teams DO NOT wear the color red?",
         choices: ["Golden State Warriors", "Washington Wizards", "Toronto Raptors", "Philadelphia 76ers"],
         answer: "Golden State Warriors"
     },
@@ -84,4 +84,5 @@ var questions = [
     }
 
 ];
+
 

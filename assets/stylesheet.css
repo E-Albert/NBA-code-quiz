@@ -1,0 +1,94 @@
+* {
+    background-color: #FFC31F;
+    margin: 5px;
+}
+
+/* nav bar styling */
+
+.nav {
+    background-color: #1d428a;
+    border: 3px solid white;
+    border-radius: 10px;
+    margin: 0;
+    height: 50px;
+    margin-bottom: 50px;
+}
+
+.nav p{
+    background-color: #1d428a;
+}
+
+.nav p a {
+    background-color: #1d428a;
+    color: white;
+    font-size: 25px;
+    float: left;
+}
+#timer{
+    text-align: right;
+    background-color: #1d428a;
+    color: white;
+    float: right;
+    font-size: 25px;
+}
+
+#time {
+    background-color: #1d428a;
+}
+
+/* body styling */
+
+.container {
+    display: flex;
+    margin: 50px;
+}
+
+#nbalogo {
+    width: 100%;
+    float: right;
+    border-radius: 88px;
+    border: white 10px solid;
+    height: 700px;
+}
+
+.columnleft {
+    width: 25%;
+}
+
+.columnright {
+    width: 75%;
+    padding-left: 150px;
+    padding-top: 10px;
+}
+
+
+/* start screen styling */
+
+#start-screen {
+    font-size: 25px;
+}
+
+#start-screen button {
+    color: white;
+    background-color: #c8102e;
+}
+
+/* mid-game styling */
+
+#questions {
+    font-size: 25px;
+}
+
+.hide {
+    display: none;
+}
+/* end screen styling */
+
+#endscreen button{
+    color: white;
+    background-color: #c8102e;
+}
+
+#endscreen {
+    font-size: 25px;
+}
