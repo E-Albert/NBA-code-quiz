@@ -1,36 +1,17 @@
-var startButton = document.querySelector("#startButton");
-var time = document.getElementById("time");
+//Keeping track of quiz state
 var currentQuestionIndex = 0;
+// var time = questions.length * 7;
+var timerId;
+
+
+//DOM Elements. Elements grabbed from HTML page
+var startButtonElement = document.querySelector("#startButton");
 var questionsElement = document.querySelector("#questions");
 var questionChoices = document.querySelector("#choices")
-
-function startQuiz() {
-    var startScreen = document.querySelector("start-Screen");
-    startScreen.setAttribute("class", "hide");
-    questionsElement.removeAttribute("class");
-    getCurrentQuestion();
-}
-
-function getCurrentQuestion() {
-    var currentQuestion = questions[currentQuestionIndex];
-    var titleElement = document.querySelector("#question-title");
-    titleElement.textContent = currentQuestion.title;
-    questionChoices.textContent = "";
-
-    for (var i = 0; i < currentQuestion.choices.length; i++) {
-        var choiceNode = document.createElement("button");
-        choiceNode.setAttribute("class", "choices");
-        choiceNode.setAttribute("value", currentQuestion.choices[i]);
-        choiceNode.textContent = i + 1 + ". " + currentQuestion.choices[i];
-        questionChoices.appendChild(choiceNode);
-
-    }
-    }
-startButton.addEventListener("click", startQuiz);
+var timeElement = document.querySelector("#time");
 
 
-
-
+//questions and answers that are going to be displayed to the user
 var questions = [
     {
         title: "How long is an NBA court?",
@@ -84,5 +65,50 @@ var questions = [
     }
 
 ];
+
+function startQuiz() {
+    //grabs the start screens
+    var startScreen = document.querySelector("#start-screen");
+    //hides the start screen
+    startScreen.setAttribute("class", "hide");
+    //displays the questions screen
+    questionsElement.removeAttribute("class");
+    //grabs questions to display on screen
+    getCurrentQuestion();
+}
+
+function getCurrentQuestion() {
+    //grabs the first question in questions array
+    var currentQuestion = questions[currentQuestionIndex];
+    //grabs the h2 in questions div to display title of question
+    var titleElement = document.querySelector("#question-title");
+    //setting the text content of the h2 to the title of the question from current index
+    titleElement.textContent = currentQuestion.title;
+    //clearing the context for the answer choices so that they wont stack up
+    questionChoices.textContent = "";
+
+    for (var i = 0; i < currentQuestion.choices.length; i++) {
+        //for each choice we are creating a button
+        var choiceNode = document.createElement("button");
+        //for each choice we are setting a class of 'choices'
+        choiceNode.setAttribute("class", "choices");
+        //for each answer button we are setting its value to an answer choice
+        choiceNode.setAttribute("value", currentQuestion.choices[i]);
+        //labeling the answer button with numbers and the answer choice
+        choiceNode.textContent = i + 1 + ". " + currentQuestion.choices[i];
+        //putting each answer button to the page
+        questionChoices.appendChild(choiceNode);
+
+    }
+
+ 
+}
+
+//Start button that is going to listen for a click then run startQuiz()
+startButtonElement.addEventListener("click", startQuiz);
+
+
+
+
 
 
