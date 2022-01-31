@@ -83,6 +83,10 @@
     display: none;
 }
 
+.choice {
+    background-color: #c8102e;
+    color: white;
+}
 /* end screen styling */
 
 #endscreen button{

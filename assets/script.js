@@ -66,6 +66,8 @@ var questions = [
 
 ];
 
+var time = questions.length * 7;
+
 function startQuiz() {
     //grabs the start screens
     var startScreen = document.querySelector("#start-screen");
@@ -75,6 +77,7 @@ function startQuiz() {
     questionsElement.removeAttribute("class");
     //grabs questions to display on screen
     getCurrentQuestion();
+    tickTock();
 }
 
 function getCurrentQuestion() {
@@ -90,19 +93,65 @@ function getCurrentQuestion() {
     for (var i = 0; i < currentQuestion.choices.length; i++) {
         //for each choice we are creating a button
         var choiceNode = document.createElement("button");
-        //for each choice we are setting a class of 'choices'
-        choiceNode.setAttribute("class", "choices");
+        //for each choice we are setting a class of 'choice'
+        choiceNode.setAttribute("class", "choice");
         //for each answer button we are setting its value to an answer choice
         choiceNode.setAttribute("value", currentQuestion.choices[i]);
         //labeling the answer button with numbers and the answer choice
         choiceNode.textContent = i + 1 + ". " + currentQuestion.choices[i];
         //putting each answer button to the page
         questionChoices.appendChild(choiceNode);
-
     }
 
- 
+    answerCheck();
 }
+
+//going to make a function that verifies the answer and moves to the next question
+//not finished
+function answerCheck() {
+    var answerChoice = document.querySelector('.choice');
+    var currentQuestionAnswer = questions[currentQuestionIndex];
+    
+    answerChoice.addEventListener('click', function () {
+        if (answerChoice.value === currentQuestionAnswer.value) {
+            console.log('hi');
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                getCurrentQuestion();
+            }
+
+        } else {
+            console.log('bye');
+            time -= 5;
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                getCurrentQuestion();
+            }
+        }
+    })
+};
+
+//using setInterval to move the time
+function tickTock() {
+    var timerInterval = setInterval(function () {
+        time--;
+        timeElement.textContent = time;
+        if (time <= 0) {
+            clearInterval(timerInterval);
+            gameOver();
+        }
+    }, 1000);
+}
+
+//need to bring in the end screen when the game is over
+function gameOver() {
+    questionsElement.setAttribute('class', 'hide');
+    var endScreen = document.querySelector('#endscreen');
+    endScreen.removeAttribute('class');
+
+}
+
+//need a way for the quiz to go away when all the answers have been answered
 
 //Start button that is going to listen for a click then run startQuiz()
 startButtonElement.addEventListener("click", startQuiz);
