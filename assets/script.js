@@ -81,6 +81,7 @@ function startQuiz() {
 }
 
 function getCurrentQuestion() {
+    console.log(currentQuestionIndex);
     //grabs the first question in questions array
     var currentQuestion = questions[currentQuestionIndex];
     //grabs the h2 in questions div to display title of question
@@ -103,33 +104,45 @@ function getCurrentQuestion() {
         questionChoices.appendChild(choiceNode);
     }
 
-    answerCheck();
+    
 }
 
 //going to make a function that verifies the answer and moves to the next question
 //not finished
-function answerCheck() {
-    var answerChoice = document.querySelector('.choice');
+
+    var answerChoice = document.querySelector('#choices');
     var currentQuestionAnswer = questions[currentQuestionIndex];
     
-    answerChoice.addEventListener('click', function () {
-        if (answerChoice.value === currentQuestionAnswer.value) {
-            console.log('hi');
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                getCurrentQuestion();
-            }
+    answerChoice.addEventListener('click', function (e) {
+        
+        if (e.target.className === 'choice') {
+            console.log(e.target);
+        
+            //log out the values before we check them
+            //console.log('They clicked ' + e.target.value + '\n' + 'the answer is' + currentQuestionAnswer.answer);
+            //actually check the values coming from the button and the question
+            if (e.target.value === currentQuestionAnswer.answer) {
+                //console.log('correct')
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    getCurrentQuestion();
+                } else {
+                    gameOver();
+                }
 
-        } else {
-            console.log('bye');
-            time -= 5;
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                getCurrentQuestion();
+            } else {
+               // console.log('incorrect');
+                time -= 5;
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    getCurrentQuestion();
+                } else {
+                    gameOver();
+                }
             }
-        }
+         }
     })
-};
+
 
 //using setInterval to move the time
 function tickTock() {
@@ -148,8 +161,12 @@ function gameOver() {
     questionsElement.setAttribute('class', 'hide');
     var endScreen = document.querySelector('#endscreen');
     endScreen.removeAttribute('class');
+    // clearInterval(timerId)
+    // var finalScore = document.querySelector('#finalscore');
+    // finalScore.textContent = time;
 
 }
+
 
 //need a way for the quiz to go away when all the answers have been answered
 
