@@ -1,7 +1,7 @@
 //Keeping track of quiz state
 var currentQuestionIndex = 0;
 // var time = questions.length * 7;
-var timerId;
+var timerInterval;
 
 
 //DOM Elements. Elements grabbed from HTML page
@@ -146,7 +146,7 @@ function getCurrentQuestion() {
 
 //using setInterval to move the time
 function tickTock() {
-    var timerInterval = setInterval(function () {
+        timerInterval = setInterval(function () {
         time--;
         timeElement.textContent = time;
         if (time <= 0) {
@@ -161,9 +161,9 @@ function gameOver() {
     questionsElement.setAttribute('class', 'hide');
     var endScreen = document.querySelector('#endscreen');
     endScreen.removeAttribute('class');
-    // clearInterval(timerId)
-    // var finalScore = document.querySelector('#finalscore');
-    // finalScore.textContent = time;
+    clearInterval(timerInterval);
+    var finalScore = document.querySelector('#finalscore');
+    finalScore.textContent = time;
 
 }
 
