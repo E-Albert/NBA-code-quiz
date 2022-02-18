@@ -66,7 +66,7 @@ var questions = [
 
 ];
 
-var time = questions.length * 7;
+var time = questions.length * 10;
 
 function startQuiz() {
     //grabs the start screens
@@ -108,7 +108,7 @@ function getCurrentQuestion() {
 }
 
 //going to make a function that verifies the answer and moves to the next question
-//not finished
+
 
     var answerChoice = document.querySelector('#choices');
     var currentQuestionAnswer = questions[currentQuestionIndex];
